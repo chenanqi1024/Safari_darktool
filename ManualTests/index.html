@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Safari Dark Tool Manual Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8124/cross-origin.css">
+    <script src="test-page.js" defer></script>
+</head>
+<body>
+    <header class="hero">
+        <h1>Bright page fixture</h1>
+        <p>This page intentionally uses bright backgrounds, hard-coded text
+        colors, iframes, and delayed content.</p>
+    </header>
+
+    <main>
+        <section class="panel">
+            <h2>Light surfaces</h2>
+            <p>The white cards and pale table should become dark and readable.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Surface</th>
+                        <th>Expected after darkening</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Background</td>
+                        <td>Dark neutral</td>
+                    </tr>
+                    <tr>
+                        <td>Text</td>
+                        <td>Readable high contrast</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="panel low-contrast">
+            <h2>Hard-coded low contrast</h2>
+            <p>This paragraph starts with dark text on a dark custom background
+            after inversion rules are applied. The extension should repair it.</p>
+        </section>
+
+        <section class="computed-surface">
+            <h2>Computed light surface</h2>
+            <p>This card gets its white background from CSS variables, so the
+            extension must detect the computed color rather than only parsing
+            raw stylesheet declarations.</p>
+        </section>
+
+        <section class="panel media-fixture">
+            <h2>Media colors</h2>
+            <p>Photos, generated media, SVG artwork, and background images should
+            keep their original colors in dark mode.</p>
+            <div class="media-grid">
+                <figure>
+                    <img
+                        alt="Colorful mountain test image"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 140'%3E%3Crect width='240' height='140' fill='%23ffe066'/%3E%3Ccircle cx='196' cy='34' r='24' fill='%23ff6b6b'/%3E%3Cpath d='M0 140 78 48 128 102 164 62 240 140Z' fill='%232684ff'/%3E%3Cpath d='M0 140 112 82 164 118 240 86 240 140Z' fill='%233ddc97'/%3E%3C/svg%3E">
+                    <figcaption>Data URI image</figcaption>
+                </figure>
+                <figure>
+                    <div
+                        class="background-swatch"
+                        style="background-image: linear-gradient(135deg, #ff4d4f 0%, #ffdd57 36%, #3ddc97 66%, #2684ff 100%);">
+                    </div>
+                    <figcaption>Inline background-image</figcaption>
+                </figure>
+                <figure>
+                    <canvas id="media-canvas" width="240" height="140"></canvas>
+                    <figcaption>Canvas drawing</figcaption>
+                </figure>
+                <figure>
+                    <svg class="inline-artwork" viewBox="0 0 240 140" role="img" aria-label="Inline SVG color test">
+                        <rect width="240" height="140" fill="#141414"></rect>
+                        <circle cx="56" cy="48" r="28" fill="#ff4d4f"></circle>
+                        <rect x="92" y="24" width="54" height="54" rx="10" fill="#ffdd57"></rect>
+                        <path d="M154 104 188 28 222 104Z" fill="#3ddc97"></path>
+                        <image href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%232684ff'/%3E%3Ccircle cx='20' cy='20' r='12' fill='%23ffffff'/%3E%3C/svg%3E" x="92" y="86" width="40" height="40"></image>
+                    </svg>
+                    <figcaption>Inline SVG artwork</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="panel cross-origin-card">
+            <h2>Cross-origin stylesheet</h2>
+            <p>If the second local server is running, this card is styled by
+            `http://127.0.0.1:8124/cross-origin.css`.</p>
+        </section>
+
+        <section class="panel">
+            <h2>Frames</h2>
+            <iframe src="iframe.html" title="Same-origin iframe"></iframe>
+            <iframe id="blank-frame" title="About blank iframe"></iframe>
+        </section>
+
+        <section id="app-shell" class="panel">
+            <h2>Delayed app shell</h2>
+            <p>Dynamic content appears below after a short delay.</p>
+        </section>
+    </main>
+</body>
+</html>

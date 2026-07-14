@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
@@ -10,10 +10,80 @@
     <script src="../Script.js" defer></script>
 </head>
 <body>
-    <img src="../Icon.png" width="128" height="128" alt="Safari_darktool Icon">
-    <p class="state-unknown">You can turn on Safari_darktool’s extension in Safari Extensions preferences.</p>
-    <p class="state-on">Safari_darktool’s extension is currently on. You can turn it off in Safari Extensions preferences.</p>
-    <p class="state-off">Safari_darktool’s extension is currently off. You can turn it on in Safari Extensions preferences.</p>
-    <button class="open-preferences">Quit and Open Safari Extensions Preferences…</button>
+    <main class="shell" aria-labelledby="app-title">
+        <section class="intro">
+            <div class="brand">
+                <img class="app-icon" src="../Icon.png" width="72" height="72" alt="Safari Dark Tool icon">
+                <div>
+                    <p class="eyebrow">Safari Extension</p>
+                    <h1 id="app-title">Safari Dark Tool</h1>
+                </div>
+            </div>
+
+            <div class="status-panel" aria-live="polite">
+                <span class="status-dot" aria-hidden="true"></span>
+                <div>
+                    <p class="status-title state-unknown">Ready for setup</p>
+                    <p class="status-title state-on">Extension is on</p>
+                    <p class="status-title state-off">Extension is off</p>
+                    <p class="status-title state-error">Extension status could not be checked</p>
+                    <p class="status-detail state-unknown">Open Safari Settings, enable the extension, then use the toolbar button in Safari.</p>
+                    <p class="status-detail state-on">Open Safari and use the toolbar button to control dark mode for each website.</p>
+                    <p class="status-detail state-off">Turn it on in the Extensions section of Safari Settings before browsing.</p>
+                    <p class="status-detail state-error">Open Safari Settings and verify that Safari Dark Tool is listed there.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-panel" aria-labelledby="setup-title">
+            <div class="section-heading">
+                <p class="eyebrow">Setup</p>
+                <h2 id="setup-title">Enable it in Safari</h2>
+            </div>
+
+            <ol class="steps">
+                <li class="step step-settings">
+                    <span class="step-marker">1</span>
+                    <div>
+                        <h3>Open Safari Settings</h3>
+                        <p>Use the button below to jump directly to the extension settings page.</p>
+                    </div>
+                </li>
+                <li class="step step-enable">
+                    <span class="step-marker">2</span>
+                    <div>
+                        <h3>Turn on Safari Dark Tool</h3>
+                        <p>In Extensions, check Safari Dark Tool and allow it on the websites you want to darken.</p>
+                    </div>
+                </li>
+                <li class="step step-use">
+                    <span class="step-marker">3</span>
+                    <div>
+                        <h3>Use the toolbar button</h3>
+                        <p>Choose Dark, Original, or Auto, disable the current site, and tune brightness or contrast.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <button class="open-preferences" type="button">Open Safari Extensions Preferences</button>
+        </section>
+
+        <section class="usage-grid" aria-label="What the extension controls">
+            <article>
+                <h2>Modes</h2>
+                <p>Dark forces local dark mode, Original restores the page, and Auto follows macOS appearance.</p>
+            </article>
+            <article>
+                <h2>Site switch</h2>
+                <p>Disable or restore dark mode for the website you are currently viewing.</p>
+            </article>
+            <article>
+                <h2>Visual tuning</h2>
+                <p>Adjust brightness, contrast, and sepia without uploading webpage contents.</p>
+            </article>
+        </section>
+
+        <p class="privacy-note">Settings stay in Safari extension storage. Webpage contents are not uploaded.</p>
+    </main>
 </body>
 </html>

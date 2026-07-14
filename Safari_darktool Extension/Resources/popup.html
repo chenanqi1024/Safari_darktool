@@ -1,11 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="popup.css">
     <script type="module" src="popup.js"></script>
 </head>
 <body>
-    <strong>Hello World!</strong>
+    <main class="popup-shell">
+        <header class="popup-header">
+            <div>
+                <h1>Safari Dark Tool</h1>
+                <p id="site-label">No active site</p>
+            </div>
+            <span id="status-pill" class="status-pill">Ready</span>
+        </header>
+
+        <section class="control-group" aria-labelledby="mode-title">
+            <h2 id="mode-title">Mode</h2>
+            <div class="segmented-control" role="group" aria-label="Dark mode">
+                <button type="button" data-mode="dark">Dark</button>
+                <button type="button" data-mode="original">Original</button>
+                <button type="button" data-mode="auto">Auto</button>
+            </div>
+        </section>
+
+        <section class="control-group" aria-labelledby="site-title">
+            <h2 id="site-title">Current Site</h2>
+            <label class="switch-row">
+                <span>Apply on this site</span>
+                <input id="site-enabled" type="checkbox">
+            </label>
+            <p id="site-note" class="note">Site controls require a page with a hostname.</p>
+        </section>
+
+        <section class="control-group" aria-labelledby="options-title">
+            <h2 id="options-title">Options</h2>
+            <label class="checkbox-row">
+                <input id="skip-dark-sites" type="checkbox">
+                <span>Skip websites that are already dark</span>
+            </label>
+        </section>
+
+        <section class="control-group" aria-labelledby="visual-title">
+            <h2 id="visual-title">Visual</h2>
+
+            <label class="slider-row">
+                <span>Brightness <output id="brightness-value">100%</output></span>
+                <input id="brightness" type="range" min="60" max="140" step="1">
+            </label>
+
+            <label class="slider-row">
+                <span>Contrast <output id="contrast-value">105%</output></span>
+                <input id="contrast" type="range" min="60" max="160" step="1">
+            </label>
+
+            <label class="slider-row">
+                <span>Sepia <output id="sepia-value">0%</output></span>
+                <input id="sepia" type="range" min="0" max="100" step="1">
+            </label>
+        </section>
+
+        <section class="control-group" aria-labelledby="floating-title">
+            <h2 id="floating-title">Page Control</h2>
+            <label class="switch-row">
+                <span>Show floating control</span>
+                <input id="floating-enabled" type="checkbox">
+            </label>
+            <button id="restore-floating" class="secondary-button" type="button" disabled>Show on this site</button>
+        </section>
+
+        <p id="status-message" class="status-message" role="status">Settings are saved locally.</p>
+    </main>
 </body>
 </html>
